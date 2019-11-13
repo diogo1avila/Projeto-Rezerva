@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head></h:head>
+	<h:body>
+		<h:form>
+			<fieldset>
+				<legend>Nova Pessoa</legend>
+				<h:panelGrid columns="2">
+					
+					<h:outputLabel value="Usuario" for="pessoa"/>
+					<h:selectOneMenu id="pessoa" value="#{reservaController.idPessoa}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true"/>
+						<f:selectItems value="#{reservaController.todosTipos}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}"/>
+					</h:selectOneMenu>
+					
+					<h:outputLabel value="Laboratorio" for="laboratorio"/>
+					<h:selectOneMenu id="laborartorio" value="#{reservaController.idLab}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true"/>
+						<f:selectItems value="#{reservaController.todosTipos}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}"/>
+					</h:selectOneMenu>
+					
+					
+					
+					<h:outputLabel value="Data" for="data"/>
+					<h:inputText id="data" type="date" value="#{reservaController.reserva.data}"/>
+					
+					
+					<h:outputLabel value="Hora Inicio" for="horai"/>
+					<h:inputText id="horai" type="time" min="07:00" max="22:00" value="#{reservaController.reserva.horainicio}"/>
+					
+					<h:outputLabel value="Hora fim" for="horaf"/>
+					<h:inputText id="horaf" type="time" min="08:00" max="23:00" value="#{reservaController.reserva.horafim}"/>
+						
+					<h:commandButton value = "Gravar" action = "#{reservaController.gravar}"/>
+					
+				</h:panelGrid>
+			</fieldset>
+	</h:form>
+
+	<a href="index.xhtml">index</a>
+	</h:body>
+</html>
