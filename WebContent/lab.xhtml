@@ -21,9 +21,43 @@ xmlns:f="http://xmlns.jcp.org/jsf/core">
 			<f:selectItem itemLabel="Selecionar..." noSelectionOption="true"/>
 			<f:selectItems value="#{laboratorioController.todosTipos}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}"/>
 		</h:selectOneMenu>
-		
-		<h:commandButton value = "Gravar" action = "#{laboratorioController.gravar}"/>
-		</h:panelGrid>
+			</h:panelGrid>
+		</fieldset>
+		<fieldset>
+			<legend>Itens do Laboratório</legend>
+
+			<h:panelGrid columns="5">
+				<h:outputText value="Equipamento" for="equipamento" />
+				<h:selectOneMenu id="equipamento" value="#{laboratorioController.equipamentoId}">
+					<f:selectItem itemLabel="Selecionar" noSelectionOption="true"/>
+					<f:selectItems value="#{laboratorioController.todosEquipamentos}" var="equipamento" itemLabel="#{equipamento.nome}" itemValue="#{equipamento.id}"/>
+				</h:selectOneMenu>
+				
+				<h:outputText value="Quantidade" for="qtde" />
+				<h:inputText id="qtde" value="#{laboratorioController.qtde}"/>
+				
+				<h:commandButton value="Gravar Item" action="#{laboratorioController.gravarItem}"/>
+			</h:panelGrid>
+			
+			<h:dataTable value="#{laboratorioController.itensDaComanda}" var="item">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{item.equipamento.nome}"/>
+				</h:column>
+							
+				<h:column>
+					<f:facet name="header">Quantidade</f:facet>
+					<h:outputText id="qtde" value="#{item.qtde}" />
+				</h:column>
+						
+				<h:column>
+					<f:facet name="header">Remover</f:facet>
+					<h:commandLink value="X" action="#{laboratorioController.removerItem(item)}"/>
+				</h:column>
+			</h:dataTable>
+			
+				
+			<h:commandButton value="Gravar" action="#{laboratorioController.gravar}" />
 		</fieldset>
 	</h:form>
 	<h:form>

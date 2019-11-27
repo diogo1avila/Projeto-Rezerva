@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head></h:head>
+<h:body>
+	
+	<h:form>
+	<fieldset>
+	<legend>Nova Pessoa</legend>
+	<h:panelGrid columns="2">
+		<h:outputLabel value="Nome" for="nome"/>
+		<h:inputText id="nome" value="#{pessoaController.pessoa.nome}"/>
+		
+		<h:outputLabel value="Matricula" for="matricula"/>
+		<h:inputText id="matricula" value="#{pessoaController.pessoa.matricula}"/>
+		
+		<h:outputLabel value="Curso" for="curso"/>
+		<h:inputText id="curso" value="#{pessoaController.pessoa.curso}"/>
+		
+		<h:outputLabel value="Senha" for="password"/>
+		<h:inputText id="password" value="#{pessoaController.pessoa.senha}">
+			<f:passThroughAttribute name="type" value="password"></f:passThroughAttribute>
+		</h:inputText>
+		
+
+		
+		<h:outputLabel value="Tipo Pessoa" for="tipopessoa"/>
+		<h:selectOneMenu id="tipopessoa" value="#{pessoaController.idTipoPessoa}">
+			<f:selectItem itemLabel="Selecionar..." noSelectionOption="true"/>
+			<f:selectItems value="#{pessoaController.todosTipos}" var="t" itemLabel="#{t.tipo}" itemValue="#{t.id}"/>
+		</h:selectOneMenu>
+		
+		<h:commandButton value = "Gravar" action = "#{pessoaController.gravar}"/>
+		</h:panelGrid>
+		</fieldset>
+	</h:form>
+	<h:form>
+		<h:dataTable value="#{pessoaController.todosPessoas}" var="pessoa">
+			
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{pessoa.nome}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Tipo</f:facet>
+				<h:outputText value="#{pessoa.tipopessoa.tipo}"/>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Remover</f:facet>
+				<h:commandLink value="Remover " action="#{pessoaController.remover(pessoa)}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Alterar</f:facet>
+				<h:commandLink value="Alterar " action="#{pessoaController.carregar(pessoa)}"/>
+			</h:column>
+			
+		</h:dataTable>
+	</h:form>
+	
+	<a href="index.xhtml">index</a>
+</h:body>
+</html>

@@ -12,31 +12,57 @@ xmlns:f="http://xmlns.jcp.org/jsf/core">
 					<h:outputLabel value="Usuario" for="pessoa"/>
 					<h:selectOneMenu id="pessoa" value="#{reservaController.idPessoa}">
 						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true"/>
-						<f:selectItems value="#{reservaController.todosTipos}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}"/>
+						<f:selectItems value="#{pessoaController.todosPessoas}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}"/>
 					</h:selectOneMenu>
 					
 					<h:outputLabel value="Laboratorio" for="laboratorio"/>
 					<h:selectOneMenu id="laborartorio" value="#{reservaController.idLab}">
 						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true"/>
-						<f:selectItems value="#{reservaController.todosTipos}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}"/>
+						<f:selectItems value="#{laboratorioController.todosLaboratorios}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}"/>
 					</h:selectOneMenu>
 					
 					
 					
 					<h:outputLabel value="Data" for="data"/>
-					<h:inputText id="data" type="date" value="#{reservaController.reserva.data}"/>
+					<h:inputText id="data" value="#{reservaController.reserva.data}">
+					<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>	
+					</h:inputText>
 					
-					
-					<h:outputLabel value="Hora Inicio" for="horai"/>
-					<h:inputText id="horai" type="time" min="07:00" max="22:00" value="#{reservaController.reserva.horainicio}"/>
-					
-					<h:outputLabel value="Hora fim" for="horaf"/>
-					<h:inputText id="horaf" type="time" min="08:00" max="23:00" value="#{reservaController.reserva.horafim}"/>
-						
 					<h:commandButton value = "Gravar" action = "#{reservaController.gravar}"/>
 					
 				</h:panelGrid>
 			</fieldset>
+	</h:form>
+	
+	<h:form>
+		<h:dataTable value="#{reservaController.todasPesssoas}" var="reserva">
+			
+			<h:column>
+				<f:facet name="header">pessoa</f:facet>
+				<h:outputText value="#{reserva.usuario.nome}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Lab</f:facet>
+				<h:outputText value="#{reserva.laboratorio.nome}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">data</f:facet>
+				<h:outputText value="#{reserva.data}"/>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Remover</f:facet>
+				<h:commandLink value="Remover " action="#{reservaController.remover(reserva)}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Alterar</f:facet>
+				<h:commandLink value="Alterar " action="#{reservaController.carregar(reserva)}"/>
+			</h:column>
+			
+		</h:dataTable>
 	</h:form>
 
 	<a href="index.xhtml">index</a>
