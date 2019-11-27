@@ -14,21 +14,35 @@ import modelo.TipoLab;
 @ManagedBean
 @ViewScoped
 public class ReservaControler {
-	private Integer idReserva;
 	private Reserva reserva= new Reserva();
 	private Integer idPessoa, idLab;
-	public Integer getIdReserva() {
-		return idReserva;
-	}
-	public void setIdReserva(Integer idReserva) {
-		this.idReserva = idReserva;
-	}
-	public Reserva getR() {
+	
+	
+	public Reserva getReserva() {
 		return reserva;
 	}
-	public void setR(Reserva r) {
-		this.reserva = r;
+
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
 	}
+
+	public Integer getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(Integer idPessoa) {
+		this.idPessoa = idPessoa;
+	}
+
+	public Integer getIdLab() {
+		return idLab;
+	}
+
+	public void setIdLab(Integer idLab) {
+		this.idLab = idLab;
+	}
+
+
 
 	public void gravar(){
 		Pessoa p= new Dao<Pessoa>(Pessoa.class).buscaPorId(idPessoa);
@@ -41,7 +55,7 @@ public class ReservaControler {
 			new Dao<Reserva>(Reserva.class).atualiza(reserva);
 	}
 	
-	public List<Reserva>getTodasRezervas(){
+	public List<Reserva>getTodasReservas(){
 		return new Dao<Reserva>(Reserva.class).buscaTodos();
 	}
 	

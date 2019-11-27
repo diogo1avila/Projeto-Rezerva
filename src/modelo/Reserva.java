@@ -17,9 +17,7 @@ public class Reserva {
 	@OneToOne
 	private Laboratorio laboratorio ;
 	
-	private Calendar data;
-	private Calendar horainicio;
-	private Calendar horafim;
+	private Calendar data= Calendar.getInstance();
 	public Pessoa getUsuario() {
 		return usuario;
 	}
@@ -38,18 +36,8 @@ public class Reserva {
 	public void setData(Calendar data) {
 		this.data = data;
 	}
-	public Calendar getHorainicio() {
-		return horainicio;
-	}
-	public void setHorainicio(Calendar horainicio) {
-		this.horainicio = horainicio;
-	}
-	public Calendar getHorafim() {
-		return horafim;
-	}
-	public void setHorafim(Calendar horafim) {
-		this.horafim = horafim;
-	}
+
+	
 	public Integer getId() {
 		return id;
 	}
