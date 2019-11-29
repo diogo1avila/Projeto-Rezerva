@@ -12,7 +12,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author 12151002639
+ * @author 12141000517
  */
 public class Dao <T>{
     private final Class<T> classe;

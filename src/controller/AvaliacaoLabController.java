@@ -2,26 +2,26 @@ package controller;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.ViewScoped;
 
 import DAO.Dao;
+import modelo.AvaliacaoLab;
 import modelo.Laboratorio;
 import modelo.Pessoa;
-import modelo.Reserva;
 
-@ManagedBean
+@javax.faces.bean.ManagedBean
 @ViewScoped
-public class ReservaController {
-	private Reserva reserva = new Reserva();
+public class AvaliacaoLabController {
+	private AvaliacaoLab AvaliacaoLab = new AvaliacaoLab();
 	private Integer idPessoa, idLaboratorio;
 
-	public Reserva getReserva() {
-		return reserva;
+	public AvaliacaoLab getAvaliacaoLab() {
+		return AvaliacaoLab;
 	}
 
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
+	public void setAvaliacaoLab(AvaliacaoLab avaliacaoLab) {
+		AvaliacaoLab = avaliacaoLab;
 	}
 
 	public Integer getIdPessoa() {
@@ -36,33 +36,33 @@ public class ReservaController {
 		return idLaboratorio;
 	}
 
-	public void setIdLaboratorio(Integer idLab) {
-		this.idLaboratorio = idLab;
+	public void setIdLaboratorio(Integer idLaboratorio) {
+		this.idLaboratorio = idLaboratorio;
 	}
 
 	public void gravar() {
 		Pessoa p = new Dao<Pessoa>(Pessoa.class).buscaPorId(idPessoa);
-		reserva.setPessoa(p);
+		AvaliacaoLab.setPessoa(p);
 		Laboratorio l = new Dao<Laboratorio>(Laboratorio.class).buscaPorId(idLaboratorio);
-		reserva.setLaboratorio(l);
-		if (reserva.getId() == null)
-			new Dao<Reserva>(Reserva.class).adiciona(reserva);
+		AvaliacaoLab.setLaboratorio(l);
+		if (AvaliacaoLab.getId() == null)
+			new Dao<AvaliacaoLab>(AvaliacaoLab.class).adiciona(AvaliacaoLab);
 		else
-			new Dao<Reserva>(Reserva.class).atualiza(reserva);
+			new Dao<AvaliacaoLab>(AvaliacaoLab.class).atualiza(AvaliacaoLab);
 	}
 
-	public List<Reserva> getTodosReservas() {
-		return new Dao<Reserva>(Reserva.class).buscaTodos();
+	public List<AvaliacaoLab> getTodosAvaliacaoLabs() {
+		return new Dao<AvaliacaoLab>(AvaliacaoLab.class).buscaTodos();
 	}
 
-	public void remover(Reserva p) {
-		new Dao<Reserva>(Reserva.class).remove(p.getId());
+	public void remover(AvaliacaoLab p) {
+		new Dao<AvaliacaoLab>(AvaliacaoLab.class).remove(p.getId());
 	}
 
-	public void carregar(Reserva p) {
+	public void carregar(AvaliacaoLab p) {
 		idPessoa = p.getPessoa().getId();
 		idLaboratorio = p.getLaboratorio().getId();
-		reserva = p;
+		AvaliacaoLab = p;
 	}
 
 	public List<Pessoa> getTodosPessoa() {
@@ -72,4 +72,5 @@ public class ReservaController {
 	public List<Laboratorio> getTodosLaboratorio() {
 		return new Dao<Laboratorio>(Laboratorio.class).buscaTodos();
 	}
+
 }

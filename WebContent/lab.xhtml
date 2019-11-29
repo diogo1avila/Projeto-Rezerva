@@ -1,90 +1,111 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head></h:head>
 <h:body>
-	
-	<h:form>
-	<fieldset>
-	<legend>Novo Laboratório</legend>
-	<h:panelGrid columns="2">
-		<h:outputLabel value="Nome" for="nome"/>
-		<h:inputText id="nome" value="#{laboratorioController.laboratorio.nome}"/>
-		
-		<h:outputLabel value="Número" for="numero"/>
-		<h:inputText id="numero" value="#{laboratorioController.laboratorio.numero}"/>
-		
-		<h:outputLabel value="Tipo Lab" for="tipolab"/>
-		<h:selectOneMenu id="tipolab" value="#{laboratorioController.idTipoLab}">
-		
-			<f:selectItem itemLabel="Selecionar..." noSelectionOption="true"/>
-			<f:selectItems value="#{laboratorioController.todosTipos}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}"/>
-		</h:selectOneMenu>
-			</h:panelGrid>
-		</fieldset>
-		<fieldset>
-			<legend>Itens do Laboratório</legend>
+	<ui:composition template="template.xhtml">
+		<ui:define name="titulo_pagina">
+		Cadastro de Laboratório
+	</ui:define>
+		<ui:define name="formulario">
+			<h:form>
+				<fieldset>
+					<legend>Novo Laboratório</legend>
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Nome" for="nome" />
+						<h:inputText class="form-control" id="nome"
+							value="#{laboratorioController.laboratorio.nome}" />
 
-			<h:panelGrid columns="5">
-				<h:outputText value="Equipamento" for="equipamento" />
-				<h:selectOneMenu id="equipamento" value="#{laboratorioController.equipamentoId}">
-					<f:selectItem itemLabel="Selecionar" noSelectionOption="true"/>
-					<f:selectItems value="#{laboratorioController.todosEquipamentos}" var="equipamento" itemLabel="#{equipamento.nome}" itemValue="#{equipamento.id}"/>
-				</h:selectOneMenu>
-				
-				<h:outputText value="Quantidade" for="qtde" />
-				<h:inputText id="qtde" value="#{laboratorioController.qtde}"/>
-				
-				<h:commandButton value="Gravar Item" action="#{laboratorioController.gravarItem}"/>
-			</h:panelGrid>
-			
-			<h:dataTable value="#{laboratorioController.itensDaComanda}" var="item">
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-					<h:outputText value="#{item.equipamento.nome}"/>
-				</h:column>
-							
-				<h:column>
-					<f:facet name="header">Quantidade</f:facet>
-					<h:outputText id="qtde" value="#{item.qtde}" />
-				</h:column>
-						
-				<h:column>
-					<f:facet name="header">Remover</f:facet>
-					<h:commandLink value="X" action="#{laboratorioController.removerItem(item)}"/>
-				</h:column>
-			</h:dataTable>
-			
-				
-			<h:commandButton value="Gravar" action="#{laboratorioController.gravar}" />
-		</fieldset>
-	</h:form>
-	<h:form>
-		<h:dataTable value="#{laboratorioController.todosLaboratorios}" var="laboratorio">
-			
-			<h:column>
-				<f:facet name="header">Nome</f:facet>
-				<h:outputText value="#{laboratorio.nome}"/>
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Tipo</f:facet>
-				<h:outputText value="#{laboratorio.tipolab.nome}"/>
-			</h:column>
+						<h:outputLabel value="Número" for="numero" />
+						<h:inputText class="form-control" id="numero"
+							value="#{laboratorioController.laboratorio.numero}" />
 
-			<h:column>
-				<f:facet name="header">Remover</f:facet>
-				<h:commandLink value="Remover " action="#{laboratorioController.remover(laboratorio)}"/>
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Alterar</f:facet>
-				<h:commandLink value="Alterar " action="#{laboratorioController.carregar(laboratorio)}"/>
-			</h:column>
-			
-		</h:dataTable>
-	</h:form>
-	<a href="index.xhtml">index</a>
+						<h:outputLabel value="Tipo Lab" for="tipolab" />
+						<h:selectOneMenu class="form-control" id="tipolab"
+							value="#{laboratorioController.idTipoLab}">
+
+							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+							<f:selectItems value="#{laboratorioController.todosTipos}"
+								var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+				</fieldset>
+				<fieldset>
+					<legend>Itens do Laboratório</legend>
+
+					<h:panelGrid columns="5">
+						<h:outputText value="Equipamento" for="equipamento" />
+						<h:selectOneMenu class="form-control" id="equipamento"
+							value="#{laboratorioController.equipamentoId}">
+							<f:selectItem itemLabel="Selecionar" noSelectionOption="true" />
+							<f:selectItems value="#{laboratorioController.todosEquipamentos}"
+								var="equipamento" itemLabel="#{equipamento.nome}"
+								itemValue="#{equipamento.id}" />
+						</h:selectOneMenu>
+
+						<h:outputText value="Quantidade" for="qtde" />
+						<h:inputText class="form-control" id="qtde"
+							value="#{laboratorioController.qtde}" />
+
+						<h:commandButton class="btn btn-success mt-3" value="Gravar Item"
+							action="#{laboratorioController.gravarItem}" />
+					</h:panelGrid>
+
+					<h:dataTable value="#{laboratorioController.itensDaComanda}"
+						var="item">
+						<h:column>
+							<f:facet name="header">Nome</f:facet>
+							<h:outputText value="#{item.equipamento.nome}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Quantidade</f:facet>
+							<h:outputText id="qtde" value="#{item.qtde}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Remover</f:facet>
+							<h:commandLink class="btn btn-danger" value="X"
+								action="#{laboratorioController.removerItem(item)}" />
+						</h:column>
+					</h:dataTable>
+
+
+					<h:commandButton class="btn btn-success mt-3" value="Gravar"
+						action="#{laboratorioController.gravar}" />
+				</fieldset>
+			</h:form>
+		</ui:define>
+		<ui:define name="tabela">
+			<h:form>
+				<h:dataTable class="table table-hover"
+					value="#{laboratorioController.todosLaboratorios}"
+					var="laboratorio">
+
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						<h:outputText value="#{laboratorio.nome}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Tipo</f:facet>
+						<h:outputText value="#{laboratorio.tipolab.nome}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Remover</f:facet>
+						<h:commandLink class="btn btn-danger" value="Remover "
+							action="#{laboratorioController.remover(laboratorio)}" />
+					</h:column>
+
+
+
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

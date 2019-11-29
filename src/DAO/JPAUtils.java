@@ -11,12 +11,12 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author 12101000400
+ * @author 12141000517
  */
 public class JPAUtils {
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("rezerva");
-    
-    public static EntityManager getEntityManager(){
-        return emf.createEntityManager();
-    }
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("rezerva");
+
+	public static EntityManager getEntityManager() {
+		return emf.createEntityManager();
+	}
 }

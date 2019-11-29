@@ -1,26 +1,23 @@
 package modelo;
 
-import java.util.Calendar;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-public class Reserva {
+public class AvaliacaoLab {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private String comentario;
 
-	@OneToOne
-	private Pessoa pessoa;
-
+	private Double nota;
 	@OneToOne
 	private Laboratorio laboratorio;
+	@OneToOne
+	private Pessoa pessoa;
 
 	public Integer getId() {
 		return id;
@@ -30,12 +27,20 @@ public class Reserva {
 		this.id = id;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
+	public String getComentario() {
+		return comentario;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+	public Double getNota() {
+		return nota;
+	}
+
+	public void setNota(Double nota) {
+		this.nota = nota;
 	}
 
 	public Laboratorio getLaboratorio() {
@@ -46,15 +51,12 @@ public class Reserva {
 		this.laboratorio = laboratorio;
 	}
 
-	public Calendar getData() {
-		return data;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setData(Calendar data) {
-		this.data = data;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
-
-	@Temporal(TemporalType.DATE)
-	private Calendar data = Calendar.getInstance();
 
 }

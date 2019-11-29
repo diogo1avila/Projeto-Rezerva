@@ -8,17 +8,17 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class EquipamentosLab {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@OneToOne
 	private Equipamento equipamento;
 	private Integer qtde;
-	
+
 	@OneToOne
 	private Laboratorio lab;
-	
+
 	public Laboratorio getLab() {
 		return lab;
 	}

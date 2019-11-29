@@ -11,7 +11,6 @@ import modelo.EquipamentosLab;
 import modelo.Laboratorio;
 import modelo.TipoLab;
 
-
 @ManagedBean
 @ViewScoped
 public class LaboratorioController {
@@ -19,7 +18,6 @@ public class LaboratorioController {
 	private Integer idTipoLab;
 	private Integer qtde;
 	private Integer equipamentoId;
-	
 
 	public Integer getQtde() {
 		return qtde;
@@ -52,53 +50,49 @@ public class LaboratorioController {
 	public void setIdTipoLab(Integer idTipoLab) {
 		this.idTipoLab = idTipoLab;
 	}
-	public List<Equipamento> getTodosEquipamentos(){
+
+	public List<Equipamento> getTodosEquipamentos() {
 		return new Dao<Equipamento>(Equipamento.class).buscaTodos();
 	}
-	
-	public void gravarItem(){
+
+	public void gravarItem() {
 		Equipamento p = new Dao<Equipamento>(Equipamento.class).buscaPorId(equipamentoId);
 		EquipamentosLab item = new EquipamentosLab();
 		item.setEquipamento(p);
 		item.setQtde(qtde);
 		item.setLaboratorio(laboratorio);
-		
+
 		laboratorio.getItens().add(item);
 		qtde = 0;
 		equipamentoId = null;
 	}
-	
+
 	public List<EquipamentosLab> getItensDaComanda() {
 		return laboratorio.getItens();
 	}
-	
-	public void removerItem(EquipamentosLab item){
-		
+
+	public void removerItem(EquipamentosLab item) {
+
 	}
 
-	public void gravar(){
+	public void gravar() {
 		TipoLab t = new Dao<TipoLab>(TipoLab.class).buscaPorId(idTipoLab);
 		laboratorio.setTipolab(t);
-		if(laboratorio.getId()==null)
+		if (laboratorio.getId() == null)
 			new Dao<Laboratorio>(Laboratorio.class).adiciona(laboratorio);
 		else
 			new Dao<Laboratorio>(Laboratorio.class).atualiza(laboratorio);
 	}
-	
-	public List<Laboratorio>getTodosLaboratorios(){
+
+	public List<Laboratorio> getTodosLaboratorios() {
 		return new Dao<Laboratorio>(Laboratorio.class).buscaTodos();
 	}
-	
-	public void remover(Laboratorio p){
+
+	public void remover(Laboratorio p) {
 		new Dao<Laboratorio>(Laboratorio.class).remove(p.getId());
 	}
-	
-	public void carregar(Laboratorio p){
-		idTipoLab=p.getTipolab().getId();
-		laboratorio= p;
-	}
-	
-	public List<TipoLab> getTodosTipos(){
+
+	public List<TipoLab> getTodosTipos() {
 		return new Dao<TipoLab>(TipoLab.class).buscaTodos();
 	}
 

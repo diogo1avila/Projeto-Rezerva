@@ -8,7 +8,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<div id="cabecalho_pagina">
-		<title><ui:insert name="titulo_pagina" /> Pagina Inicial</title>
+		<title><ui:insert name="titulo_pagina" /></title>
 	</div>
 	<meta name="viewport" content="width-device, initial scale = 1.0" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -43,7 +43,7 @@
 								do Laboratório</a> <a class="dropdown-item" href="repprob.xhtml">Reportar
 								Problema</a>
 						</div></li>
-					<!-- -->
+					<!--  -->
 				</ul>
 			</div>
 		</nav>
@@ -54,8 +54,15 @@
 		</div>
 		<div id="tabela_body">
 			<p>
-				<a class="btn btn-secondary" role="button" href="reserva.xhtml">Reserva</a>
+				<a class="btn btn-secondary" data-toggle="collapse"
+					href="#collapseExample" role="button" aria-expanded="false"
+					aria-controls="collapseExample">Visualizar Cadastros</a>
 			</p>
+			<div class="collapse mt-3" id="collapseExample">
+				<div class="card card-body">
+					<ui:insert name="tabela" />
+				</div>
+			</div>
 		</div>
 	</div>
 	<div id="footer_body" class="mt-3">
@@ -83,6 +90,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mask.js"></script>
 	<script type="text/javascript" src="js/popper.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </h:body>

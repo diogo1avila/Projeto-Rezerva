@@ -8,75 +8,60 @@
 <h:body>
 	<ui:composition template="template.xhtml">
 		<ui:define name="titulo_pagina">
-		Nova Rezerva
+		Reportar Problema
 	</ui:define>
 		<ui:define name="formulario">
 			<h:form>
 				<fieldset>
-					<legend>Nova Reserva</legend>
-					<h:panelGrid columns="2">
-						<h:outputText id="nome" value="Data" for="data" />
-						<h:inputText class="form-control" id="data"
-							value="#{reservaController.reserva.data.time}">
-							<f:convertDateTime  pattern="dd/MM/yyyy"
-								timeZone="America/Sao_Paulo" value="00/00/0000" />
-						</h:inputText>
-
+					<legend>Reportar Problema</legend>
+						<h:outputLabel value="Problema" for="problema" />
+						<h:inputText class="form-control"  id="problema" value="#{reportarController.reportar.problema}" />
 
 						<h:outputLabel value="Pessoa" for="pessoa" />
-						<h:selectOneMenu class="form-control" id="pessoa"
-							value="#{reservaController.idPessoa}">
+						<h:selectOneMenu class="form-control" id="pessoa" value="#{reportarController.idPessoa}">
 							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{reservaController.todosPessoa}" var="t"
-								itemLabel="#{t.nome}" itemValue="#{t.id}" />
+							<f:selectItems value="#{reportarController.todosPessoa}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
 						</h:selectOneMenu>
 
 						<h:outputLabel value="Laboratorio" for="laboratorio" />
-						<h:selectOneMenu class="form-control" id="laboratorio"
-							value="#{reservaController.idLaboratorio}">
+						<h:selectOneMenu class="form-control" id="laboratorio" value="#{reportarController.idLaboratorio}">
 							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{reservaController.todosLaboratorio}"
-								var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
+							<f:selectItems value="#{reportarController.todosLaboratorio}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
 						</h:selectOneMenu>
 
 						<h:commandButton class="btn btn-success mt-3" value="Gravar"
-							action="#{reservaController.gravar}" />
-					</h:panelGrid>
+							action="#{reportarController.gravar}" />
 				</fieldset>
 			</h:form>
 		</ui:define>
 		<ui:define name="tabela">
 			<h:form>
 				<h:dataTable class="table table-hover"
-					value="#{reservaController.todosReservas}" var="reserva">
-
-					<h:column>
-						<f:facet name="header">Data</f:facet>
-						<h:outputText value="#{reserva.data.time}">
-							<f:convertDateTime pattern="dd/MM/yyyy"
-								timeZone="America/Sao_Paulo" />
-						</h:outputText>
-					</h:column>
+					value="#{reportarController.todosReportars}" var="reportar">
 
 					<h:column>
 						<f:facet name="header">Pessoa</f:facet>
-						<h:outputText value="#{reserva.pessoa.nome}" />
+						<h:outputText value="#{reportar.pessoa.nome}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">Laboratorio</f:facet>
-						<h:outputText value="#{reserva.laboratorio.nome}" />
+						<h:outputText value="#{reportar.laboratorio.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Problema</f:facet>
+						<h:outputText value="#{reportar.problema}" />
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">Remover</f:facet>
 						<h:commandLink class="btn btn-danger" value="Remover "
-							action="#{reservaController.remover(reserva)}" />
+							action="#{reportarController.remover(reportar)}" />
 					</h:column>
 
 					<h:column>
 						<f:facet name="header">Alterar</f:facet>
 						<h:commandLink class="btn btn-warning" value="Alterar "
-							action="#{reservaController.carregar(reserva)}" />
+							action="#{reportarController.carregar(reportar)}" />
 					</h:column>
 
 				</h:dataTable>

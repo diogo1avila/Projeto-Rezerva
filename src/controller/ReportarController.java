@@ -2,26 +2,26 @@ package controller;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.ViewScoped;
 
 import DAO.Dao;
 import modelo.Laboratorio;
 import modelo.Pessoa;
-import modelo.Reserva;
+import modelo.Reportar;
 
-@ManagedBean
+@javax.faces.bean.ManagedBean
 @ViewScoped
-public class ReservaController {
-	private Reserva reserva = new Reserva();
+public class ReportarController {
+	private Reportar reportar = new Reportar();
 	private Integer idPessoa, idLaboratorio;
 
-	public Reserva getReserva() {
-		return reserva;
+	public Reportar getReportar() {
+		return reportar;
 	}
 
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
+	public void setReportar(Reportar reportar) {
+		this.reportar = reportar;
 	}
 
 	public Integer getIdPessoa() {
@@ -36,33 +36,33 @@ public class ReservaController {
 		return idLaboratorio;
 	}
 
-	public void setIdLaboratorio(Integer idLab) {
-		this.idLaboratorio = idLab;
+	public void setIdLaboratorio(Integer idLaboratorio) {
+		this.idLaboratorio = idLaboratorio;
 	}
 
 	public void gravar() {
 		Pessoa p = new Dao<Pessoa>(Pessoa.class).buscaPorId(idPessoa);
-		reserva.setPessoa(p);
+		reportar.setPessoa(p);
 		Laboratorio l = new Dao<Laboratorio>(Laboratorio.class).buscaPorId(idLaboratorio);
-		reserva.setLaboratorio(l);
-		if (reserva.getId() == null)
-			new Dao<Reserva>(Reserva.class).adiciona(reserva);
+		reportar.setLaboratorio(l);
+		if (reportar.getId() == null)
+			new Dao<Reportar>(Reportar.class).adiciona(reportar);
 		else
-			new Dao<Reserva>(Reserva.class).atualiza(reserva);
+			new Dao<Reportar>(Reportar.class).atualiza(reportar);
 	}
 
-	public List<Reserva> getTodosReservas() {
-		return new Dao<Reserva>(Reserva.class).buscaTodos();
+	public List<Reportar> getTodosReportars() {
+		return new Dao<Reportar>(Reportar.class).buscaTodos();
 	}
 
-	public void remover(Reserva p) {
-		new Dao<Reserva>(Reserva.class).remove(p.getId());
+	public void remover(Reportar p) {
+		new Dao<Reportar>(Reportar.class).remove(p.getId());
 	}
 
-	public void carregar(Reserva p) {
+	public void carregar(Reportar p) {
 		idPessoa = p.getPessoa().getId();
 		idLaboratorio = p.getLaboratorio().getId();
-		reserva = p;
+		reportar = p;
 	}
 
 	public List<Pessoa> getTodosPessoa() {
@@ -72,4 +72,5 @@ public class ReservaController {
 	public List<Laboratorio> getTodosLaboratorio() {
 		return new Dao<Laboratorio>(Laboratorio.class).buscaTodos();
 	}
+
 }
