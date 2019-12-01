@@ -14,24 +14,24 @@
 			<h:form>
 				<fieldset>
 					<legend>Novo Laboratório</legend>
-					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome" for="nome" />
-						<h:inputText class="form-control" id="nome"
-							value="#{laboratorioController.laboratorio.nome}" />
 
-						<h:outputLabel value="Número" for="numero" />
-						<h:inputText class="form-control" id="numero"
-							value="#{laboratorioController.laboratorio.numero}" />
+					<h:outputLabel value="Nome" for="nome" />
+					<h:inputText class="form-control" id="nome"
+						value="#{laboratorioController.laboratorio.nome}" />
 
-						<h:outputLabel value="Tipo Lab" for="tipolab" />
-						<h:selectOneMenu class="form-control" id="tipolab"
-							value="#{laboratorioController.idTipoLab}">
+					<h:outputLabel value="Número" for="numero" />
+					<h:inputText class="form-control" id="numero"
+						value="#{laboratorioController.laboratorio.numero}" />
 
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{laboratorioController.todosTipos}"
-								var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
-					</h:panelGrid>
+					<h:outputLabel value="Tipo Lab" for="tipolab" />
+					<h:selectOneMenu class="form-control" id="tipolab"
+						value="#{laboratorioController.idTipoLab}">
+
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{laboratorioController.todosTipos}" var="t"
+							itemLabel="#{t.nome}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
+
 				</fieldset>
 				<fieldset>
 					<legend>Itens do Laboratório</legend>

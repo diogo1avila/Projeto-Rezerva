@@ -14,23 +14,28 @@
 			<h:form>
 				<fieldset>
 					<legend>Reportar Problema</legend>
-						<h:outputLabel value="Problema" for="problema" />
-						<h:inputText class="form-control"  id="problema" value="#{reportarController.reportar.problema}" />
+					<h:outputLabel value="Problema" for="problema" />
+					<h:inputText class="form-control" id="problema"
+						value="#{reportarController.reportar.problema}" />
 
-						<h:outputLabel value="Pessoa" for="pessoa" />
-						<h:selectOneMenu class="form-control" id="pessoa" value="#{reportarController.idPessoa}">
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{reportarController.todosPessoa}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
+					<h:outputLabel value="Pessoa" for="pessoa" />
+					<h:selectOneMenu class="form-control" id="pessoa"
+						value="#{reportarController.idPessoa}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{reportarController.todosPessoa}" var="t"
+							itemLabel="#{t.nome}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
 
-						<h:outputLabel value="Laboratorio" for="laboratorio" />
-						<h:selectOneMenu class="form-control" id="laboratorio" value="#{reportarController.idLaboratorio}">
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{reportarController.todosLaboratorio}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
+					<h:outputLabel value="Laboratorio" for="laboratorio" />
+					<h:selectOneMenu class="form-control" id="laboratorio"
+						value="#{reportarController.idLaboratorio}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{reportarController.todosLaboratorio}"
+							var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
 
-						<h:commandButton class="btn btn-success mt-3" value="Gravar"
-							action="#{reportarController.gravar}" />
+					<h:commandButton class="btn btn-success mt-3" value="Gravar"
+						action="#{reportarController.gravar}" />
 				</fieldset>
 			</h:form>
 		</ui:define>

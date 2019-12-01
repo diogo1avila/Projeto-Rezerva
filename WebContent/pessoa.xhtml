@@ -14,38 +14,38 @@
 			<h:form>
 				<fieldset>
 					<legend>Nova Pessoa</legend>
-					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome" for="nome" />
-						<h:inputText class="form-control" id="nome"
-							value="#{pessoaController.pessoa.nome}" />
 
-						<h:outputLabel value="Matricula" for="matricula" />
-						<h:inputText class="form-control" id="matricula"
-							value="#{pessoaController.pessoa.matricula}" />
+					<h:outputLabel value="Nome" for="nome" />
+					<h:inputText class="form-control" id="nome"
+						value="#{pessoaController.pessoa.nome}" />
 
-						<h:outputLabel value="Curso" for="curso" />
-						<h:inputText class="form-control" id="curso"
-							value="#{pessoaController.pessoa.curso}" />
+					<h:outputLabel value="Matricula" for="matricula" />
+					<h:inputText class="form-control" id="matricula"
+						value="#{pessoaController.pessoa.matricula}" />
 
-						<h:outputLabel value="Senha" for="password" />
-						<h:inputText class="form-control" id="password"
-							value="#{pessoaController.pessoa.senha}">
-							<f:passThroughAttribute name="type" value="password"></f:passThroughAttribute>
-						</h:inputText>
+					<h:outputLabel value="Curso" for="curso" />
+					<h:inputText class="form-control" id="curso"
+						value="#{pessoaController.pessoa.curso}" />
+
+					<h:outputLabel value="Senha" for="password" />
+					<h:inputText class="form-control" id="password"
+						value="#{pessoaController.pessoa.senha}">
+						<f:passThroughAttribute name="type" value="password"></f:passThroughAttribute>
+					</h:inputText>
 
 
 
-						<h:outputLabel value="Tipo Pessoa" for="tipopessoa" />
-						<h:selectOneMenu class="form-control" id="tipopessoa"
-							value="#{pessoaController.idTipoPessoa}">
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{pessoaController.todosTipos}" var="t"
-								itemLabel="#{t.tipo}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
+					<h:outputLabel value="Tipo Pessoa" for="tipopessoa" />
+					<h:selectOneMenu class="form-control" id="tipopessoa"
+						value="#{pessoaController.idTipoPessoa}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{pessoaController.todosTipos}" var="t"
+							itemLabel="#{t.tipo}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
 
-						<h:commandButton class="btn btn-success mt-3" value="Gravar"
-							action="#{pessoaController.gravar}" />
-					</h:panelGrid>
+					<h:commandButton class="btn btn-success mt-3" value="Gravar"
+						action="#{pessoaController.gravar}" />
+
 				</fieldset>
 			</h:form>
 		</ui:define>

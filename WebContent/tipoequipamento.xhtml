@@ -15,14 +15,14 @@
 			<h:form>
 				<fieldset>
 					<legend>Novo Tipo de equipamentos</legend>
-					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome" for="nome" />
-						<h:inputText class="form-control" id="nome"
-							value="#{tipoEquipamentoController.tipoequipamento.nome}" />
 
-						<h:commandButton class="btn btn-success mt-3" value="Gravar"
-							action="#{tipoEquipamentoController.gravar}" />
-					</h:panelGrid>
+					<h:outputLabel value="Nome" for="nome" />
+					<h:inputText class="form-control" id="nome"
+						value="#{tipoEquipamentoController.tipoequipamento.nome}" />
+
+					<h:commandButton class="btn btn-success mt-3" value="Gravar"
+						action="#{tipoEquipamentoController.gravar}" />
+
 				</fieldset>
 			</h:form>
 		</ui:define>

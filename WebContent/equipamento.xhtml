@@ -14,21 +14,21 @@
 			<h:form>
 				<fieldset>
 					<legend>Novo Equipamento</legend>
-						<h:outputLabel value="Nome" for="nome" />
-						<h:inputText class="form-control"  rows="3" id="nome"
-							value="#{equipamentoController.equipamento.nome}" />
+					<h:outputLabel value="Nome" for="nome" />
+					<h:inputText class="form-control" rows="3" id="nome"
+						value="#{equipamentoController.equipamento.nome}" />
 
-						<h:outputLabel value="Tipo Equipamento" for="tipoequipamento" />
-						<h:selectOneMenu class="form-control" id="tipoequipamento"
-							value="#{equipamentoController.idTipoEquipamento}">
+					<h:outputLabel value="Tipo Equipamento" for="tipoequipamento" />
+					<h:selectOneMenu class="form-control" id="tipoequipamento"
+						value="#{equipamentoController.idTipoEquipamento}">
 
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{equipamentoController.todosTipos}"
-								var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{equipamentoController.todosTipos}" var="t"
+							itemLabel="#{t.nome}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
 
-						<h:commandButton class="btn btn-success mt-3" value="Gravar"
-							action="#{equipamentoController.gravar}" />
+					<h:commandButton class="btn btn-success mt-3" value="Gravar"
+						action="#{equipamentoController.gravar}" />
 				</fieldset>
 			</h:form>
 		</ui:define>

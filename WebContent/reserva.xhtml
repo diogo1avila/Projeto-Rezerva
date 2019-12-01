@@ -14,34 +14,34 @@
 			<h:form>
 				<fieldset>
 					<legend>Nova Reserva</legend>
-					<h:panelGrid columns="2">
-						<h:outputText id="nome" value="Data" for="data" />
-						<h:inputText class="form-control" id="data"
-							value="#{reservaController.reserva.data.time}">
-							<f:convertDateTime  pattern="dd/MM/yyyy"
-								timeZone="America/Sao_Paulo" value="00/00/0000" />
-						</h:inputText>
+
+					<h:outputText id="nome" value="Data" for="data" />
+					<h:inputText class="form-control" id="data"
+						value="#{reservaController.reserva.data.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy"
+							timeZone="America/Sao_Paulo" value="00/00/0000" />
+					</h:inputText>
 
 
-						<h:outputLabel value="Pessoa" for="pessoa" />
-						<h:selectOneMenu class="form-control" id="pessoa"
-							value="#{reservaController.idPessoa}">
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{reservaController.todosPessoa}" var="t"
-								itemLabel="#{t.nome}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
+					<h:outputLabel value="Pessoa" for="pessoa" />
+					<h:selectOneMenu class="form-control" id="pessoa"
+						value="#{reservaController.idPessoa}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{reservaController.todosPessoa}" var="t"
+							itemLabel="#{t.nome}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
 
-						<h:outputLabel value="Laboratorio" for="laboratorio" />
-						<h:selectOneMenu class="form-control" id="laboratorio"
-							value="#{reservaController.idLaboratorio}">
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{reservaController.todosLaboratorio}"
-								var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
+					<h:outputLabel value="Laboratorio" for="laboratorio" />
+					<h:selectOneMenu class="form-control" id="laboratorio"
+						value="#{reservaController.idLaboratorio}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{reservaController.todosLaboratorio}"
+							var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
 
-						<h:commandButton class="btn btn-success mt-3" value="Gravar"
-							action="#{reservaController.gravar}" />
-					</h:panelGrid>
+					<h:commandButton class="btn btn-success mt-3" value="Gravar"
+						action="#{reservaController.gravar}" />
+
 				</fieldset>
 			</h:form>
 		</ui:define>

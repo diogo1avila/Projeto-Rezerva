@@ -14,33 +14,40 @@
 			<h:form>
 				<fieldset>
 					<legend>Nova Avaliação</legend>
-						<h:outputLabel value="Comentario" for="comentario" />
-						<h:inputText class="form-control" id="comentario" value="#{avaliacaoLabController.avaliacaoLab.comentario}" />
-							
-						<h:outputLabel value="Nota de 0.0 a 10.0" for="nota" />
-						<h:inputText class="form-control" id="nota" value="#{avaliacaoLabController.avaliacaoLab.nota}" />
+					<h:outputLabel value="Comentario" for="comentario" />
+					<h:inputText class="form-control" id="comentario"
+						value="#{avaliacaoLabController.avaliacaoLab.comentario}" />
 
-						<h:outputLabel value="Pessoa" for="pessoa" />
-						<h:selectOneMenu class="form-control" id="pessoa" value="#{avaliacaoLabController.idPessoa}">
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{avaliacaoLabController.todosPessoa}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
+					<h:outputLabel value="Nota de 0.0 a 10.0" for="nota" />
+					<h:inputText class="form-control" id="nota"
+						value="#{avaliacaoLabController.avaliacaoLab.nota}" />
 
-						<h:outputLabel value="Laboratorio" for="laboratorio" />
-						<h:selectOneMenu class="form-control" id="laboratorio" value="#{avaliacaoLabController.idLaboratorio}">
-							<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
-							<f:selectItems value="#{avaliacaoLabController.todosLaboratorio}" var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
-						</h:selectOneMenu>
+					<h:outputLabel value="Pessoa" for="pessoa" />
+					<h:selectOneMenu class="form-control" id="pessoa"
+						value="#{avaliacaoLabController.idPessoa}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{avaliacaoLabController.todosPessoa}"
+							var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
 
-						<h:commandButton class="btn btn-success mt-3" value="Gravar"
-							action="#{avaliacaoLabController.gravar}" />
+					<h:outputLabel value="Laboratorio" for="laboratorio" />
+					<h:selectOneMenu class="form-control" id="laboratorio"
+						value="#{avaliacaoLabController.idLaboratorio}">
+						<f:selectItem itemLabel="Selecionar..." noSelectionOption="true" />
+						<f:selectItems value="#{avaliacaoLabController.todosLaboratorio}"
+							var="t" itemLabel="#{t.nome}" itemValue="#{t.id}" />
+					</h:selectOneMenu>
+
+					<h:commandButton class="btn btn-success mt-3" value="Gravar"
+						action="#{avaliacaoLabController.gravar}" />
 				</fieldset>
 			</h:form>
 		</ui:define>
 		<ui:define name="tabela">
 			<h:form>
 				<h:dataTable class="table table-hover"
-					value="#{avaliacaoLabController.todosAvaliacaoLabs}" var="avaliacaoLab">
+					value="#{avaliacaoLabController.todosAvaliacaoLabs}"
+					var="avaliacaoLab">
 
 					<h:column>
 						<f:facet name="header">Pessoa</f:facet>

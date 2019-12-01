@@ -2,7 +2,6 @@ package controller;
 
 import java.util.List;
 
-
 import javax.faces.bean.ViewScoped;
 
 import DAO.Dao;
